@@ -1,11 +1,11 @@
-from flask import Flask
-
-app = Flask(__name__)
+from flask import render_template
+from app import app
 
 @app.route("/")
 @app.route("/home")
 def home():
-    return "<h1>Home Page</h1>"
+    '''
+    View root page function that returns the home page and its data
+    '''
+    return render_template('home.html')
 
-if __name__ == '__main__':
-    app.run(debug = True)
