@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from .requests import get_sources,get_news,search_articles,articles_source
+from .requests import get_sources,get_news,search_articles
 
 @app.route("/")
 @app.route("/home")
@@ -11,7 +11,7 @@ def home():
     general_news = get_sources('general')
     business_news = get_sources("business")
     sports_news = get_sources("sports")
-    return render_template('sources.html')
+    return render_template('source.html',general=general_news,business=business_news,sports=sports_news)
 
 @app.route('/newsArticles')
 def newsArticles():
@@ -35,9 +35,3 @@ def articleSearch(article_name):
 
     return render_template('search.html',articles = searched_articles)
 
-@app.route('/articles/<id>')
-def sourceArticles(id):
-    all_articles = articles_source(id)
-    print(all_articles)
-    source = id
-    return render_template('sourcearticles.html', articles = all_articles, source = source)
