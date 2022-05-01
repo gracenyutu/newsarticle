@@ -1,9 +1,10 @@
-from flask import render_template
-from app import app
-from .requests import get_sources,get_news,search_articles
+from flask import render_template,request,redirect,url_for
+from . import main
+from ..requests import get_sources,get_news,search_articles
+from ..models import News, Sources
 
-@app.route("/")
-@app.route("/home")
+@main.route("/")
+@main.route("/home")
 def home():
     '''
     View root page function that returns the home page and its data
@@ -13,7 +14,7 @@ def home():
     sports_news = get_sources("sports")
     return render_template('source.html',general=general_news,business=business_news,sports=sports_news)
 
-@app.route('/newsArticles')
+@main.route('/newsArticles')
 def newsArticles():
 
     '''
@@ -24,7 +25,7 @@ def newsArticles():
 
     return render_template('news.html',health=health_articles, technology=education_articles)
 
-@app.route('/search/<article_name>')
+@main.route('/search/<article_name>')
 def articleSearch(article_name):
     """
     function that returns the searched articles

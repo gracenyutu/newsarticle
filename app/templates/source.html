@@ -9,12 +9,13 @@
 {% block content %}
 <div class="container-fluid" id="allsources" >
     <div class="overlay">
-        <h2 class="text-center font-weight-bold headers" >General News</h2>
+        <h2 class="text-center font-weight-bold headers" style="background-color: #1b4fdd">General News</h2>
         {{ macro.display_new_sources(general) }}
  
-        <h2 class="text-center font-weight-bold headers" > Business News</h2>
+        <h2 class="text-center font-weight-bold headers" style="background-color: #1b4fdd"> Business News </h2>
         {{ macro.display_new_sources(business) }}
-        <h2 class="text-center font-weight-bold headers" > Sports news </h2>
+        <h2 class="text-center font-weight-bold headers" style="background-color: #1b4fdd"> Sports news </h2>
         {{ macro.display_new_sources(sports) }}
     </div>
 </div>
+{% endblock%}

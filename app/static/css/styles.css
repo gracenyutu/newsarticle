@@ -1,0 +1,16 @@
+body {
+  background-color: black;
+  color: white;
+}
+.navbar {
+  background-color: black;
+  color: white;
+}
+.navbar-brand {
+  font-size: x-large;
+}
+.card {
+  background-color: rgb(43, 43, 44);
+  opacity: 0.8;
+  border-radius: 10px;
+}
