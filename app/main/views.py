@@ -14,6 +14,13 @@ def home():
     sports_news = get_sources("sports")
     return render_template('source.html',general=general_news,business=business_news,sports=sports_news)
 
+@main.route("/articles/<news_id>")
+def displayArticles(news_id):
+    news = get_news(news_id)
+
+    return render_template('articles.html',news=news)
+
+
 @main.route('/newsArticles')
 def newsArticles():
 

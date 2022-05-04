@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro %}
+
+{% block content %}
+<div class="container-fluid" id="allsources">
+    <div class="overlay container-fluid">    
+        <h2 class="text-center headers">Related Articles</h2>
+        {{macro.display_new_articles(news)}}
+    </div>
+</div>
+{% endblock %}

@@ -7,6 +7,7 @@ from .models import News, Sources
 api_key = None
 # Getting the movie base url
 base_url = None
+article_url = None
 
 # News = news.News
 # Sources = sources.Sources
@@ -17,21 +18,23 @@ def configure_request(app):
     base_url = app.config['NEWS_API_BASE_URL']
     source_url = app.config['SOURCE_ARTICLES_URL']
     news_url = app.config['NEWS_ARTICLES_APL_URL']
+    article_url = app.config['ARTICLE_URL']
 
-def get_news(category):
+def get_news(article_id):
     '''
     Function that gets the json response to our url request
     '''
-    get_news_url = base_url.format(category,api_key)
+    get_news_url = source_url.format(article_id,api_key)
 
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
         get_news_response = json.loads(get_news_data)
+        print(get_news_response)
 
         news_results = None
 
-        if get_news_response['results']:
-            news_results_list = get_news_response['results']
+        if get_news_response['articles']:
+            news_results_list = get_news_response['articles']
             news_results = process_results(news_results_list)
 
 
@@ -64,27 +67,7 @@ def process_results(news_list):
 
     return news_results
 
-def get_news(name):
-    get_news_details_url = base_url.format(name,api_key)
 
-    with urllib.request.urlopen(get_news_details_url) as url:
-        news_details_data = url.read()
-        news_details_response = json.loads(news_details_data)
-
-        news_object = None
-        if news_details_response:
-            name = news_details_response.get('name')
-            author = news_details_response.get('author')
-            title = news_details_response.get('title')
-            description = news_details_response.get('description')
-            url= news_details_response.get('url')
-            urlToImage = news_details_response.get('urlToImage')
-            publishedAt = news_details_response.get('publishedAt')
-            content = news_details_response.get('content')
-
-            news_object = News(name,author,title,description,urlToImage,publishedAt,content)
-
-    return news_object
 
 def get_sources(category):
     """
@@ -119,6 +102,8 @@ def process_new_sources(sources_list):
         sources_outcome.append(new_source)
     
     return sources_outcome
+
+
 
 def articles_source(source):
     sources_a_url = 'https://newsapi.org/v2/everything?sources={}&apiKey={}'.format(source,api_key)
