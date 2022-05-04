@@ -1,16 +1,22 @@
 body {
-  background-color: black;
+  background-color: #b8b8d1;
   color: white;
 }
 .navbar {
-  background-color: black;
+  background-color: #0d101c;
   color: white;
 }
 .navbar-brand {
   font-size: x-large;
 }
 .card {
-  background-color: rgb(43, 43, 44);
+  background-color: #5b5f97;
   opacity: 0.8;
   border-radius: 10px;
+}
+div.card {
+  margin: 5px;
+  border: 1px solid #ffc145;
+  float: left;
+  width: 180px;
 }

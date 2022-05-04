@@ -1,24 +1,17 @@
 {% macro display_new_sources(sources_outcome) %}
     <div class="container-fluid">
-        <div class="card-columns">
-            {% for news in sources_outcome %}
-            <div class="card sourcecard">
-                <div class="card-header" id="sourcename" >
-                    <h4><a href="/articles/{{news.id}}">{{news.name}}</a></h4>
-                </div>
+        {% for news in sources_outcome %}
+            <div class="card" style="width:400px">
                 <div class="card-body">
-                    <img src="{{news.urlToImage}}" alt="{{news.title }}" class="card-img">
-                    <hr>
-                    <p class="desc">
+                    <h4 class="card-title"><a href="/articles/{{news.id}}">{{news.name}}</a></h4>
+                    <p class="card-text">
                         {{news.description}}
                     </p>
-                    <a href="/articles/{{news.id}}"><button class="btn btn-sm btn-primary">Read Articles</button> </a>
-                    <a href="{{news.url}}"><button class="btn btn-sm btn-primary" id="visit">Visit {{news.name}}</button></a>
+                    <a href="/articles/{{news.id}}"><button class="btn btn-sm btn-outline-warning">View Articles</button> </a>
+                    <a href="{{news.url}}"><button class="btn btn-sm btn-outline-warning" id="visit">Visit {{news.name}}</button></a>
                 </div>
             </div>
-            {% endfor %}
-        </div>
-        
+        {% endfor %}
     </div>
 {% endmacro %}
 {% macro display_new_articles(articles_outcome) %}
@@ -32,13 +25,14 @@
                 <div class="card-body">
                     <img src="{{article.urlToImage}}" alt="{{article.title }}" class="card-img">
                     <hr>
-                    <p class="desc">
+                    <p class="description">
                         {{article.description}}
+                        {{article.content}}
                     </p>
-                    <p disabled>Posted: {{article.publishedAt | truncate(13)}} By: {{article.author | truncate(16)}} </p>
+                    <p>Posted: {{article.publishedAt | truncate(13)}} By: {{article.author | truncate(16)}} </p>
                 </div>
                 <div class="card-footer">
-                     <a href="{{article.url}}"><button class="btn btn-sm btn-outline-success">Read More</button></a> 
+                     <a href="{{article.url}}"><button class="btn btn-sm btn-primary">Read More</button></a> 
                 </div>
             </div>
         {% endfor %}
