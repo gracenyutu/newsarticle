@@ -7,8 +7,8 @@
                     <p class="card-text">
                         {{news.description}}
                     </p>
-                    <a href="/articles/{{news.id}}"><button class="btn btn-sm btn-outline-warning">View Articles</button> </a>
-                    <a href="{{news.url}}"><button class="btn btn-sm btn-outline-warning" id="visit">Visit {{news.name}}</button></a>
+                    <a href="/articles/{{news.id}}"><button class="btn btn-sm btn-primary">View Articles</button> </a>
+                    <a href="{{news.url}}"><button class="btn btn-sm btn-primary" id="visit">Visit {{news.name}}</button></a>
                 </div>
             </div>
         {% endfor %}
@@ -18,7 +18,7 @@
 <div class="container-fluid">
     <div class="card-columns">
         {% for article in articles_outcome %}
-            <div class="card">
+            <div class="card" id="articles">
                 <div class="card-header art">
                     <h4>{{article.title}}</h4>
                 </div>
@@ -29,7 +29,7 @@
                         {{article.description}}
                         {{article.content}}
                     </p>
-                    <p>Posted: {{article.publishedAt | truncate(13)}} By: {{article.author | truncate(16)}} </p>
+                    <p disabled>Posted: {{article.publishedAt | truncate(13)}} By: {{article.author | truncate(16)}} </p>
                 </div>
                 <div class="card-footer">
                      <a href="{{article.url}}"><button class="btn btn-sm btn-primary">Read More</button></a> 

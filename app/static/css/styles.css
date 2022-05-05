@@ -10,7 +10,7 @@ body {
   font-size: x-large;
 }
 .card {
-  background-color: #5b5f97;
+  background-color: #373d99;
   opacity: 0.8;
   border-radius: 10px;
 }
@@ -19,4 +19,12 @@ div.card {
   border: 1px solid #ffc145;
   float: left;
   width: 180px;
+  height: 200px;
+}
+#articles {
+  margin: 5px;
+  border: 1px solid #ffc145;
+  float: left;
+  width: 100%;
+  height: 350px;
 }
